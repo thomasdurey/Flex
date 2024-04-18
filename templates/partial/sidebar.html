@@ -4,7 +4,7 @@
       {% if SITELOGO %}
       <img src="{{ SITELOGO }}" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
       {% else %}
-      <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
+      <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.jpg" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
       {% endif %}
     </a>
 
@@ -57,7 +57,13 @@
             </li>
           {% endfor %}
         {% endif %}
-
+        <hr />
+          {% for category, articles in categories|sort %}
+          <li>
+            <a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> ({{ articles|count }})
+          </li>
+          {% endfor %}
+        <hr />
         {% for name, link in LINKS %}
           <li>
             <a target="{{ get_target(link) }}" href="{{ link }}" >{{ name }}</a>
